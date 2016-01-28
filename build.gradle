@@ -4,30 +4,39 @@ plugins {
 }
 
 defaultTasks 'build'
-
 group = "me.nallar"
 version = "${buildVersion}"
 
-// Source compiler configuration
+repositories {
+	jcenter()
+}
+
+dependencies {
+	testCompile 'org.testng:testng:6.9.10'
+}
+
+test {
+	useTestNG()
+}
+
 tasks.withType(JavaCompile) {
 	sourceCompatibility = 6
 	targetCompatibility = 6
 	options.with {
-		deprecation = true
 		encoding = 'UTF-8'
-		compilerArgs << "-Xlint:all" << "-Xlint:-path" << "-Xlint:-processing"
+		compilerArgs << "-Xlint:all"
 	}
 }
 
-jar.manifest.mainAttributes(
-	"Built-By": System.properties['user.name'],
-	"Created-By": System.properties['java.vm.version'] + " (" + System.properties['java.vm.vendor'] + ")",
-	"Implementation-Title": name,
-	"Implementation-Version": version
-)
-
 jar {
 	baseName = project.name
+
+	manifest.mainAttributes(
+		"Built-By": System.properties['user.name'],
+		"Created-By": System.properties['java.vm.version'] + " (" + System.properties['java.vm.vendor'] + ")",
+		"Implementation-Title": name,
+		"Implementation-Version": version
+	)
 }
 
 artifacts {

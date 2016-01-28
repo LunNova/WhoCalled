@@ -6,17 +6,17 @@ class WhoCalledProvider {
 		WhoCalledSecurityManager.class,
 	};
 
-	static WhoCalled getContextAccess() {
+	static WhoCalled getWhoCalled() {
 		for (Class<?> clazz : contextAccessClasses) {
 			try {
 				WhoCalled whoCalled = (WhoCalled) clazz.newInstance();
-				Class<?> currentClass = whoCalled.getContext(0);
+				Class<?> currentClass = whoCalled.getCallingClass(0);
 				if (currentClass != WhoCalledProvider.class) {
 					StringBuilder sb = new StringBuilder();
 					sb.append("Stack:\n");
 					for (int i = -2; i < 3; i++) {
 						try {
-							sb.append(whoCalled.getContext(i).getName()).append(" at ").append(i).append('\n');
+							sb.append(whoCalled.getCallingClass(i).getName()).append(" at ").append(i).append('\n');
 						} catch (Throwable ignored) {
 						}
 					}
