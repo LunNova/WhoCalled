@@ -1,6 +1,6 @@
 package me.nallar.whocalled;
 
-public class WhoCalledSecurityManager extends SecurityManager implements WhoCalled {
+class WhoCalledSecurityManager extends SecurityManager implements WhoCalled {
 	@Override
 	public Class<?> getContext(int depth) {
 		return getClassContext()[depth + 1];

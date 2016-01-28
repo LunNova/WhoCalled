@@ -1,6 +1,6 @@
 package me.nallar.whocalled;
 
-interface WhoCalled {
+public interface WhoCalled {
 	WhoCalled INSTANCE = WhoCalledProvider.getContextAccess();
 
 	/**
