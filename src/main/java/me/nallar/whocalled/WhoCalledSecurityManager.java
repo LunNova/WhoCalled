@@ -14,11 +14,11 @@ class WhoCalledSecurityManager extends SecurityManager implements WhoCalled {
 	}
 
 	@Override
-	public boolean isCalledByClass(Class<?> c) {
+	public boolean isCalledByClass(Class<?> clazz) {
 		Class<?>[] classes = getClassContext();
 
 		for (int i = OFFSET + 1; i < classes.length; i++) {
-			if (classes[i] == c) {
+			if (classes[i] == clazz) {
 				return true;
 			}
 		}

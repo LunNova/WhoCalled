@@ -5,7 +5,7 @@ public interface WhoCalled {
 
 	/**
 	 * Returns the Class of the method which is one level above the current method.
-	 * <p/>
+	 *
 	 * For example, if you call WhoCalled.$.getCallingClass in the Example.whoCalled(), which was called by Main.main(),
 	 * it will return Main.class.
 	 *
@@ -15,7 +15,7 @@ public interface WhoCalled {
 
 	/**
 	 * Returns the Class of the method which is (depth) levels above the current method.
-	 * <p/>
+	 *
 	 * For example, if you call WhoCalled.$.getCallingClass(0) in the Example class, it will return
 	 * Example.class.
 	 *
@@ -24,5 +24,11 @@ public interface WhoCalled {
 	 */
 	Class<?> getCallingClass(int depth);
 
-	boolean isCalledByClass(Class<?> c);
+	/**
+	 * Returns whether the given class is one of the calling classes
+	 *
+	 * @param clazz Class to search for in callers
+	 * @return true if the class clazz is a caller of this class
+	 */
+	boolean isCalledByClass(Class<?> clazz);
 }

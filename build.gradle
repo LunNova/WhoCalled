@@ -24,6 +24,7 @@ test {
 bintray {
 	user = "nallar"
 	key = project.hasProperty('bintray') ? project.bintray : ''
+	configurations = ['archives']
 	pkg {
 		repo = 'maven'
 		name = 'WhoCalled'
@@ -55,6 +56,18 @@ jar {
 	)
 }
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+	classifier = 'javadoc'
+	from javadoc.destinationDir
+}
+
 artifacts {
+	archives sourcesJar
+	archives javadocJar
 	archives jar
 }

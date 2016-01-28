@@ -16,14 +16,14 @@ class WhoCalledReflection implements WhoCalled {
 	}
 
 	@Override
-	public boolean isCalledByClass(Class<?> c) {
+	public boolean isCalledByClass(Class<?> clazz) {
 		for (int i = OFFSET + 1; ; i++) {
 			Class<?> caller = sun.reflect.Reflection.getCallerClass(i);
 
 			if (caller == null)
 				return false;
 
-			if (caller == c)
+			if (caller == clazz)
 				return true;
 		}
 	}
