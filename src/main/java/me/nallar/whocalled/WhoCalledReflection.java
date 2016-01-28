@@ -11,7 +11,7 @@ class WhoCalledReflection implements WhoCalled {
 	@Override
 	public boolean runningUnder(Class<?> c) {
 		for (int i = 3; ; i++) {
-			Class caller = sun.reflect.Reflection.getCallerClass(i);
+			Class<?> caller = sun.reflect.Reflection.getCallerClass(i);
 
 			if (caller == null)
 				return false;
