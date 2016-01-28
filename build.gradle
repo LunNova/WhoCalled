@@ -4,7 +4,7 @@ plugins {
 }
 
 defaultTasks 'build'
-group = "me.nallar"
+group = "me.nallar.whocalled"
 version = "${buildVersion}"
 
 repositories {

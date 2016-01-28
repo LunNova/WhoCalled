@@ -24,7 +24,7 @@ public static void exampleMethod() {
 
 Maven
 ---
-WhoCalled is available on the jcenter maven server as me.nallar:WhoCalled:1.0
+WhoCalled is available on the jcenter maven server as me.nallar.whocalled:whocalled:1.0
 
 Download
 ---
