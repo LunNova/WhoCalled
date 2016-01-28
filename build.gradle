@@ -1,6 +1,7 @@
 plugins {
 	id 'maven'
 	id 'java'
+	id "com.jfrog.bintray" version "1.4"
 }
 
 defaultTasks 'build'
@@ -17,6 +18,21 @@ dependencies {
 
 test {
 	useTestNG()
+}
+
+// run gradle bintrayUpload -Pbintray=API_KEY_HERE
+bintray {
+	user = "nallar"
+	key = project.hasProperty('bintray') ? project.bintray : ''
+	pkg {
+		repo = 'maven'
+		name = 'WhoCalled'
+		version {
+			name = project.version
+		}
+		licenses = ['MIT']
+		vcsUrl = 'https://github.com/nallar/WhoCalled.git'
+	}
 }
 
 tasks.withType(JavaCompile) {
