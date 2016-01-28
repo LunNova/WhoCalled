@@ -9,16 +9,18 @@ Copyright &copy; 2016, nallar <ross@nallar.me>
 Usage
 ---
 
-Main.java:
-```
-
-```
-
-Example.java:
+class Example:
 ```
 public static void exampleMethod() {
 	Class<?> callingClass = WhoCalled.$.getCallingClass();
 	// callingClass = Main.class
+}
+```
+
+class Main:
+```
+public static void main(String[] ignored) {
+	Example.exampleMethod();
 }
 ```
 
