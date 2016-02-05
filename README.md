@@ -24,9 +24,21 @@ public static void main(String[] ignored) {
 }
 ```
 
-Maven
+Gradle
 ---
-WhoCalled is available on the jcenter maven server as me.nallar.whocalled:whocalled:1.0
+Add jcenter to your repositories block:
+```
+repositories {
+   jcenter()
+}
+```
+
+Add WhoCalled as a dependency:
+```
+dependencies {
+	compile 'me.nallar.whocalled:WhoCalled:1.0'
+}
+```
 
 Download
 ---
