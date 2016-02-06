@@ -1,8 +1,12 @@
 plugins {
 	id 'maven'
 	id 'java'
+	id 'idea'
 	id "com.jfrog.bintray" version "1.4"
+	id 'me.champeau.gradle.jmh' version '0.2.0'
 }
+
+apply plugin: 'me.champeau.gradle.jmh'
 
 defaultTasks 'build'
 group = "me.nallar.whocalled"
@@ -18,6 +22,14 @@ dependencies {
 
 test {
 	useTestNG()
+}
+
+jmh {
+	include = ''
+	benchmarkMode = 'AverageTime'
+	timeUnit = 'ns'
+	iterations = 10
+	fork = 0
 }
 
 // run gradle bintrayUpload -Pbintray=API_KEY_HERE
@@ -41,7 +53,14 @@ tasks.withType(JavaCompile) {
 	targetCompatibility = 6
 	options.with {
 		encoding = 'UTF-8'
-		compilerArgs << "-Xlint:all"
+		compilerArgs <<
+			"-XDignore.symbol.file=true" <<
+			"-Xlint:all" <<
+			"-Xlint:-path" <<
+			"-Xlint:-rawtypes" <<
+			"-Xlint:-processing"
+		fork = true
+		forkOptions.executable = 'javac'
 	}
 }
 

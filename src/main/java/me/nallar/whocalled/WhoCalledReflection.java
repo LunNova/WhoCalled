@@ -2,7 +2,7 @@ package me.nallar.whocalled;
 
 // Deprecated method call - acceptable as this implementation is only used after it is tested by WhoCalledProvider
 @SuppressWarnings("deprecation")
-class WhoCalledReflection implements WhoCalled {
+class WhoCalledReflection extends SecurityManager implements WhoCalled {
 	private static final int OFFSET = 2;
 
 	@Override
@@ -17,6 +17,20 @@ class WhoCalledReflection implements WhoCalled {
 
 	@Override
 	public boolean isCalledByClass(Class<?> clazz) {
+		// Using SecurityManager is better performing than Reflection for isCalledByClass unless the stack depth is very small
+		// So WhoCalledReflection uses SecurityManager for this method
+		Class<?>[] classes = getClassContext();
+
+		for (int i = OFFSET; i < classes.length; i++) {
+			if (classes[i] == clazz) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	boolean isCalledByClassReflection(Class<?> clazz) {
 		for (int i = OFFSET + 1; ; i++) {
 			Class<?> caller = sun.reflect.Reflection.getCallerClass(i);
 
