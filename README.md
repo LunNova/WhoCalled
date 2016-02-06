@@ -36,7 +36,7 @@ repositories {
 Add WhoCalled as a dependency:
 ```
 dependencies {
-	compile 'me.nallar.whocalled:WhoCalled:1.0'
+	compile 'me.nallar.whocalled:WhoCalled:1.1'
 }
 ```
 
