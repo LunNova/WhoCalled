@@ -5,9 +5,9 @@ import org.openjdk.jmh.annotations.Benchmark;
 import java.util.*;
 
 public class WhoCalledBenchmark {
-	private static WhoCalledSecurityManager whoCalledSecurityManager = new WhoCalledSecurityManager();
-	private static WhoCalledReflection whoCalledReflection = new WhoCalledReflection();
-	private static WhoCalledStackTrace whoCalledStackTrace = new WhoCalledStackTrace();
+	private static final WhoCalledSecurityManager whoCalledSecurityManager = new WhoCalledSecurityManager();
+	private static final WhoCalledReflection whoCalledReflection = new WhoCalledReflection();
+	private static final WhoCalledStackTrace whoCalledStackTrace = new WhoCalledStackTrace();
 
 	@Benchmark
 	public void testSecurityManagerGet() {
