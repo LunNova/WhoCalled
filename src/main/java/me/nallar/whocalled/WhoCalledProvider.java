@@ -18,10 +18,13 @@ class WhoCalledProvider {
 	 */
 	private static final String[] brokenJavaVersion = {
 		"1.7.0.25",
+		null,
 		null
 	};
 
 	static WhoCalled getWhoCalled() {
+		assert brokenJavaVersion.length == whoCalledImplementations.length;
+
 		String javaVersion = System.getProperty("java.version").replace('_', '.');
 
 		Throwable lastError = null;
