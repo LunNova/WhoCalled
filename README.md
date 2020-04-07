@@ -1,3 +1,7 @@
+# Obsolete
+
+Use [StackWalker](http://openjdk.java.net/jeps/259) for new code.
+
 WhoCalled [![Build Status](http://nallar.me/buildservice/job/WhoCalled/badge/icon)](http://nallar.me/buildservice/job/WhoCalled/)
 ====
 Which class called me?
